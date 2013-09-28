@@ -49,38 +49,38 @@
       <div class="conteiner">
          <h1>#Cadastro de Pessoas</h1>
 
-         <form name="cadastro" action="" method="get">
+         <form name="cadastro" action="formulario.html" method="get">
             <fieldset><legend>Dados Pessoais</legend>
                <table>
                   <tbody>
                   <tr>
                      <th><label>Nome:</label></th>
-                     <td><input type="text" name="nome" size="45" required></input></td>
-                  <tr>
+                     <td><input type="text" name="nome" size="45" required></td>
+                  </tr>
 
                   <tr>
                      <th><label>Sexo:</label></th> 
                      <td>                     
-                        <input type="radio" name="sexo" value="M" id="sexo_masc"></input>
+                        <input type="radio" name="sexo" value="M" id="sexo_masc">
                         <label for="sexo_masc">Masculino</label>
-                        <input type="radio" name="sexo" value="F" id="sexo_fem"></input>
+                        <input type="radio" name="sexo" value="F" id="sexo_fem">
                         <label for="sexo_fem">Feminino</label>
                      </td>
                   </tr>
 
                   <tr>
                      <th><label>Data Nascimento:</label></th>
-                     <td><input type="date" name="nasc" size="8"></input></td>
+                     <td><input type="date" name="nasc" style="width:150px;"></td>
                   </tr>
 
                   <tr>
                      <th><label>CPF:</label></th>
-                     <td><input type="number" name="cpf" size="8" maxlength="11" required></input></td>
+                     <td><input type="number" name="cpf" required style="width: 150px; "></td>
                   </tr>   
 
                   <tr>                  
                      <th><label>RG:</label></th>
-                     <td><input type="number" name="rg" size="8" maxlength="14"></input></td>
+                     <td><input type="number" name="rg" style="width: 150px;"></td>
                   </tr>   
 
                   <tr>
@@ -91,9 +91,9 @@
                   <tr>
                      <th><label>Endereço:</label></th>
                      <td>
-                        <input type="text" name="endereco" size="29"></input>
+                        <input type="text" name="endereco" size="29">
                         <label style="margin-left:8px;">Numero: 
-                           <input type="number" name="nro" style="width:60px;"></input>
+                           <input type="number" name="nro" style="width:60px;">
                         </label>
                      </td>
                   </tr> 
@@ -101,7 +101,7 @@
                   <tr>
                      <th><label>Cidade:</label></th>
                      <td>
-                        <input type="text" name="cidade" size="22"></input>
+                        <input type="text" name="cidade" size="22">
                         <label style="margin-left:13px;">UF:
                            <select name="uf" id="uf">
                               <option value="0">Selecione o Estado</option>
@@ -140,9 +140,9 @@
                   <tr>
                      <th><label>Bairro:</label></th>
                      <td>
-                        <input type="text" name="bairro" size="28"></input>
+                        <input type="text" name="bairro" size="28">
                         <label style="margin-left:10px;">CEP:
-                           <input type="number" name="cep" style="width:90px;"></input>
+                           <input type="number" name="cep" style="width:90px;">
                         </label>
                      </td>
                   </tr>
@@ -155,15 +155,15 @@
                   <tbody>
                   <tr>
                      <th><label>Empresa:</label></th>
-                     <td><input type="text" name="empresa" size="45"></input></td>
-                  <tr>
+                     <td><input type="text" name="empresa" size="45"></td>
+                  </tr>
 
                   <tr>
                      <th><label>Endereço:</label></th>
                      <td>
-                        <input type="text" name="endereco_emp" size="28"></input>
+                        <input type="text" name="endereco_emp" size="28">
                         <label style="margin-left:12px;">Numero: 
-                           <input type="number" name="nro_emp" style="width:60px;"></input>
+                           <input type="number" name="nro_emp" style="width:60px;">
                         </label>
                      </td>
                   </tr> 
@@ -171,7 +171,7 @@
                   <tr>
                      <th><label>Cidade:</label></th>
                      <td>
-                        <input type="text" name="cidade_emp" size="22"></input>
+                        <input type="text" name="cidade_emp" size="22">
                         <label style="margin-left:11px;">UF:
                            <select name="uf_emp" id="uf_emp">
                               <option value="0">Selecione o Estado</option>
@@ -210,9 +210,9 @@
                   <tr>
                      <th><label>Bairro:</label></th>
                      <td>
-                        <input type="text" name="bairro_emp" size="28"></input>
+                        <input type="text" name="bairro_emp" size="28">
                         <label style="margin-left:10px;">CEP: 
-                           <input type="number" name="cep_emp" style="width:90px;"></input>
+                           <input type="number" name="cep_emp" style="width:90px;">
                         </label>
                      </td>
                   </tr>   
@@ -220,9 +220,9 @@
                   <tr>
                      <th><label>Salário:</label></th>
                      <td>
-                        <input type="text" name="salario" size="10"></input>
+                        <input type="text" name="salario" size="10">
                         <label style="margin-left:10px;">Cargo: 
-                           <input type="text" name="cargo" size="22"></input>
+                           <input type="text" name="cargo" size="22">
                         </label>
                      </td>
                   </tr> 
@@ -243,19 +243,19 @@
                            <option value="cns">Cursando Nível Superior</option>
                         </select>
                      </td>
-                  <tr>
+                  </tr>
 
                   <tr>
                      <th><label>Instituição:</label></th>
-                     <td><input type="text" name="instituicao" size="45"></input></td>
+                     <td><input type="text" name="instituicao" size="45"></td>
                   </tr> 
 
                   <tr>
                      <th><label>Curso:</label></th>
                      <td>
-                        <input type="text" name="curso" size="22"></input>
+                        <input type="text" name="curso" size="28">
                         <label style="margin-left:12px;">Período: 
-                           <input type="numeric" name="periodo" size="8"></input>
+                           <input type="number" name="periodo" style="width:60px;">
                         </label>
                      </td>
                   </tr>  
@@ -264,8 +264,8 @@
             </fieldset>
 
             <div class="botoes">
-               <input type="submit" value="Enviar"></input>
-               <input type="reset" value="Limpar"></input>
+               <input type="submit" value="Enviar">
+               <input type="reset" value="Limpar">
             </div>
          </form>
       </div>
