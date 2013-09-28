@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title>Formulário de Cadastro</title>
+
+      <style type="text/css">
+         .conteiner{
+            width: 766px;
+            margin: 0 auto;
+         }
+
+         h1{
+            font-size: 18px;
+            padding-bottom: 10px;
+            color: #888;
+         }
+
+         th{
+            width: 30%;
+            text-align: right;
+            font-weight: normal;
+         }
+
+         fieldset{
+            width: 766px;
+            margin-top: 10px;
+            border: 1px solid #c3c3c3;
+            font-size: 14px;
+            font-family: sans-serif;
+         }
+
+         legend{
+            font-weight: bold;
+            color: #333;
+         }
+
+         .botoes{
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+         }
+
+         .botoes input{margin:0px; padding: 0px;}
+      </style>
+   </head>
+
+   <body>
+      <div class="conteiner">
+         <h1>#Cadastro de Pessoas</h1>
+
+         <form name="cadastro" action="" method="get">
+            <fieldset><legend>Dados Pessoais</legend>
+               <table>
+                  <tbody>
+                  <tr>
+                     <th><label>Nome:</label></th>
+                     <td><input type="text" name="nome" size="45" required></input></td>
+                  <tr>
+
+                  <tr>
+                     <th><label>Sexo:</label></th> 
+                     <td>                     
+                        <input type="radio" name="sexo" value="M" id="sexo_masc"></input>
+                        <label for="sexo_masc">Masculino</label>
+                        <input type="radio" name="sexo" value="F" id="sexo_fem"></input>
+                        <label for="sexo_fem">Feminino</label>
+                     </td>
+                  </tr>
+
+                  <tr>
+                     <th><label>Data Nascimento:</label></th>
+                     <td><input type="date" name="nasc" size="8"></input></td>
+                  </tr>
+
+                  <tr>
+                     <th><label>CPF:</label></th>
+                     <td><input type="number" name="cpf" size="8" maxlength="11" required></input></td>
+                  </tr>   
+
+                  <tr>                  
+                     <th><label>RG:</label></th>
+                     <td><input type="number" name="rg" size="8" maxlength="14"></input></td>
+                  </tr>   
+
+                  <tr>
+                     <th><label>Passatempos:</label></th>
+                     <td><textarea cols="45" rows="5"></textarea></td>
+                  </tr>   
+
+                  <tr>
+                     <th><label>Endereço:</label></th>
+                     <td>
+                        <input type="text" name="endereco" size="29"></input>
+                        <label style="margin-left:8px;">Numero: 
+                           <input type="number" name="nro" style="width:60px;"></input>
+                        </label>
+                     </td>
+                  </tr> 
+
+                  <tr>
+                     <th><label>Cidade:</label></th>
+                     <td>
+                        <input type="text" name="cidade" size="22"></input>
+                        <label style="margin-left:13px;">UF:
+                           <select name="uf" id="uf">
+                              <option value="0">Selecione o Estado</option>
+                              <option value="AC">Acre</option>
+                              <option value="AL">Alagoas</option>
+                              <option value="AP">Amapá</option>
+                              <option value="AM">Amazonas</option>
+                              <option value="BA">Bahia</option>
+                              <option value="CE">Ceará</option>
+                              <option value="DF">Distrito Federal</option>
+                              <option value="ES">Espirito Santo</option>
+                              <option value="GO">Goiás</option>
+                              <option value="MA">Maranhão</option>
+                              <option value="MS">Mato Grosso do Sul</option>
+                              <option value="MT">Mato Grosso</option>
+                              <option value="MG">Minas Gerais</option>
+                              <option value="PA">Pará</option>
+                              <option value="PB">Paraíba</option>
+                              <option value="PR">Paraná</option>
+                              <option value="PE">Pernambuco</option>
+                              <option value="PI">Piauí</option>
+                              <option value="RJ">Rio de Janeiro</option>
+                              <option value="RN">Rio Grande do Norte</option>
+                              <option value="RS">Rio Grande do Sul</option>
+                              <option value="RO">Rondônia</option>
+                              <option value="RR">Roraima</option>
+                              <option value="SC">Santa Catarina</option>
+                              <option value="SP">São Paulo</option>
+                              <option value="SE">Sergipe</option>
+                              <option value="TO">Tocantins</option>
+                           </select>
+                        </label>
+                     </td>
+                  </tr>   
+
+                  <tr>
+                     <th><label>Bairro:</label></th>
+                     <td>
+                        <input type="text" name="bairro" size="28"></input>
+                        <label style="margin-left:10px;">CEP:
+                           <input type="number" name="cep" style="width:90px;"></input>
+                        </label>
+                     </td>
+                  </tr>
+                  </tbody>      
+               </table>
+            </fieldset>
+
+            <fieldset><legend>Dados Profissionais</legend>
+               <table>
+                  <tbody>
+                  <tr>
+                     <th><label>Empresa:</label></th>
+                     <td><input type="text" name="empresa" size="45"></input></td>
+                  <tr>
+
+                  <tr>
+                     <th><label>Endereço:</label></th>
+                     <td>
+                        <input type="text" name="endereco_emp" size="28"></input>
+                        <label style="margin-left:12px;">Numero: 
+                           <input type="number" name="nro_emp" style="width:60px;"></input>
+                        </label>
+                     </td>
+                  </tr> 
+
+                  <tr>
+                     <th><label>Cidade:</label></th>
+                     <td>
+                        <input type="text" name="cidade_emp" size="22"></input>
+                        <label style="margin-left:11px;">UF:
+                           <select name="uf_emp" id="uf_emp">
+                              <option value="0">Selecione o Estado</option>
+                              <option value="AC">Acre</option>
+                              <option value="AL">Alagoas</option>
+                              <option value="AP">Amapá</option>
+                              <option value="AM">Amazonas</option>
+                              <option value="BA">Bahia</option>
+                              <option value="CE">Ceará</option>
+                              <option value="DF">Distrito Federal</option>
+                              <option value="ES">Espirito Santo</option>
+                              <option value="GO">Goiás</option>
+                              <option value="MA">Maranhão</option>
+                              <option value="MS">Mato Grosso do Sul</option>
+                              <option value="MT">Mato Grosso</option>
+                              <option value="MG">Minas Gerais</option>
+                              <option value="PA">Pará</option>
+                              <option value="PB">Paraíba</option>
+                              <option value="PR">Paraná</option>
+                              <option value="PE">Pernambuco</option>
+                              <option value="PI">Piauí</option>
+                              <option value="RJ">Rio de Janeiro</option>
+                              <option value="RN">Rio Grande do Norte</option>
+                              <option value="RS">Rio Grande do Sul</option>
+                              <option value="RO">Rondônia</option>
+                              <option value="RR">Roraima</option>
+                              <option value="SC">Santa Catarina</option>
+                              <option value="SP">São Paulo</option>
+                              <option value="SE">Sergipe</option>
+                              <option value="TO">Tocantins</option>
+                           </select>
+                        </label>
+                     </td>
+                  </tr>   
+
+                  <tr>
+                     <th><label>Bairro:</label></th>
+                     <td>
+                        <input type="text" name="bairro_emp" size="28"></input>
+                        <label style="margin-left:10px;">CEP: 
+                           <input type="number" name="cep_emp" style="width:90px;"></input>
+                        </label>
+                     </td>
+                  </tr>   
+
+                  <tr>
+                     <th><label>Salário:</label></th>
+                     <td>
+                        <input type="text" name="salario" size="10"></input>
+                        <label style="margin-left:10px;">Cargo: 
+                           <input type="text" name="cargo" size="22"></input>
+                        </label>
+                     </td>
+                  </tr> 
+                  </tbody>     
+               </table>
+            </fieldset>
+
+            <fieldset><legend>Informações Escolares</legend>
+               <table>
+                  <tbody>
+                  <tr>
+                     <th><label>Grau de Instrução:</label></th>
+                     <td>
+                        <select name="grau" id="grau">
+                           <option value="ef">Ensino Fundamental</option>
+                           <option value="em">Ensino Médio</option>
+                           <option value="ns">Nível Superior</option>
+                           <option value="cns">Cursando Nível Superior</option>
+                        </select>
+                     </td>
+                  <tr>
+
+                  <tr>
+                     <th><label>Instituição:</label></th>
+                     <td><input type="text" name="instituicao" size="45"></input></td>
+                  </tr> 
+
+                  <tr>
+                     <th><label>Curso:</label></th>
+                     <td>
+                        <input type="text" name="curso" size="22"></input>
+                        <label style="margin-left:12px;">Período: 
+                           <input type="numeric" name="periodo" size="8"></input>
+                        </label>
+                     </td>
+                  </tr>  
+                  </tbody>     
+               </table>
+            </fieldset>
+
+            <div class="botoes">
+               <input type="submit" value="Enviar"></input>
+               <input type="reset" value="Limpar"></input>
+            </div>
+         </form>
+      </div>
+   </body>
+</html>
