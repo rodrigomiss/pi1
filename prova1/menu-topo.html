@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+   <head>
+      <title>Menu</title>
+      <meta charset="utf-8">
+      
+      <style type="text/css">
+         body{
+            margin: 0px;
+         }
+
+         .topo{
+            width: 100%;
+            height: 100px;
+            margin: 0px;
+            background: url(imagens/verde-gradiente.jpg) repeat;
+            padding:10px;
+            font: 14px sans-serif;
+            color: #fff;
+            text-align: center;
+         }
+
+         .conteiner_topo{
+            width: 600px;
+            margin: auto;
+            text-align: left;
+         }
+
+         .conteiner_topo #title{
+            border-bottom: 1px solid #fff;
+            font: bold 22px sans-serif;
+            padding-bottom: 6px;
+            color: #fff;
+         }
+
+         .conteiner_topo ul{
+            margin: 10px 0 0;
+            padding: 0px;
+         }
+         .conteiner_topo li{
+            display: inline;
+            margin: auto;
+            padding-right: 10px;
+         }
+
+         .conteiner_topo a{
+            //color: #c3c3c3;
+            color: #fff;
+            text-decoration: none;
+         }
+
+         .conteiner_topo a:hover{
+            color: #000;
+         }
+
+         #logo-fifa{
+            position: absolute;
+         }
+
+         /*for 980px ou menor*/
+         @media screen and (max-width: 980px){
+            .conteiner_topo{
+               width: 64%;
+               color: red;
+            }
+         }
+
+         /*for 700px ou menor */
+         @media screen and (max-width: 700px){
+            .conteiner_topo{
+               width: 30%;
+               font-size: 11px;
+            }
+
+            .conteiner_topo #title{
+               font-size: 14px;
+            }
+         }
+      </style>
+   </head>
+      <body>
+         <div class="topo">
+            <div id="logo-fifa"><img src="imagens/fifa.jpg" width="20%" align="left"></div>
+
+            <div class="conteiner_topo">
+               <div id="title">Brasil - Copa 2014</div>
+               
+               <ul>
+                  <li><a href="index.html" target="_blank">Início</a></li>
+                  <li><a href="estadios.html" target="conteudo">Estádios</a></li>
+                  <li><a href="tabela-jogos.html" target="conteudo">Tabela Jogos</a></li>
+               </ul>
+            </div>
+         </div>
+      </body>
+</html>
