@@ -1,0 +1,360 @@
+<!DOCYTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Tabuada com JavaScript</title>
+
+		<style type="text/css">
+			.content{
+				width: 500px;
+				border: 1px solid #555;
+				background: #f3f3f3;
+				margin: auto;
+				padding: 8px;
+			}
+
+			h3 a{
+				color: #b3e;
+			}
+
+			#num, #qtde_btn{
+				width: 70px;
+			}
+
+			/*textarea da tabuada*/
+			#tabuada{
+				width: 400px;
+				height: 200px;
+			}
+
+			/*exercicios iniciam ocultos*/
+			#exe01, #exe02, #exe03, #exe04, #exe05, #exe06{
+				visibility: hidden;
+				position: absolute;
+			}
+
+			/*coluna de titulo(header) da tabela de aposentadoria*/
+			#exe04 table th{
+				width: 30%;
+				text-align: right;
+			}
+
+			#exe04 #nome{
+				width: 80%;
+			}
+
+			/*box de exibição do resultado da análise da aposentadoria*/
+			#resultado_aposentadoria{
+				background-color: #3CB371;
+				border: 1px solid #2E8B57;
+				text-align: center;
+				padding: 5px;
+				margin-top: 8px;
+			}
+
+			/*campos da tabela da mercearia*/
+			#exe05 input[type="number"]{
+				width: 90px;
+			}
+
+			#exe05 table td{
+				text-align: center;
+			}
+
+			#exe05 table th{
+				background-color: #a2f;
+			}
+
+			#exe05 table, #exe05 th, #exe05 td{
+				border: 1px solid #c3c3c3;
+			}
+
+			/*media faculdade*/
+			#exe06 table th{
+				width: 30%;
+				text-align: right;
+			}
+		</style>
+
+		<script type="text/javascript">
+			function show_div(obj){
+				if (obj.style.visibility == "hidden" || obj.style.visibility == ""){
+					obj.style.visibility = "visible";
+					obj.style.position = "relative";
+				}else{
+					obj.style.visibility = "hidden";
+					obj.style.position = "absolute";
+				}
+			}
+
+			function operacao(operador){
+				var tab = document.getElementById("tabuada");
+				var n = document.getElementById("num").value;
+				var i;
+
+				if (!isFinite(n) || n == ""){
+					alert("Informe um número corretamente!");
+					return;
+				}
+	
+				tab.value = "";
+				for (i=1; i<=10; i++){
+					tab.value += n+" "+operador+" "+i+" = " + eval(n+operador+i) + "\n"; 
+				}
+			}
+
+			function cria_botao(){
+				var exe02 = document.getElementById("exe02");				
+				exe02.innerHTML = exe02.innerHTML + 
+				"<input type='button' value='Botão 3'><input type='button' value='Botão 4'>";
+
+				setTimeout("msg_ok()", 2000);
+			}
+
+			function msg_ok(){
+				alert("OK");
+			}
+
+			function cria_botao_dinamicamente(){
+				var obj = document.getElementById("exe03");
+				var n = document.getElementById("qtde_btn").value;
+				var i;
+
+				if (!isFinite(n) || n == ""){
+					alert("Informe um número corretamente!");
+					return;
+				}
+	
+				obj.innerHTML += "<br><br>";
+				for (i=1; i<=n; i++){
+					obj.innerHTML += "<input type='button' value='Botão " +i+ "' onclick='javascript:alert(\"Botão " +i+ " clicado\");'>";
+				}	
+			}
+
+			function validar_aposentadoria(){
+				var obj = document.getElementById("exe04");
+				var nome = document.getElementById("nome").value;
+				var sexo = document.getElementById("sexo").value;
+				var nasc = document.getElementById("ano_nasc").value;
+				var adm = document.getElementById("ano_adm").value;
+				var idade, tempo_trab;
+				var temp;
+
+				if (!isFinite(nasc) || nasc == ""){
+					alert("Data de Nascimento incorreta!");
+					return;
+				}
+
+				if (!isFinite(adm) || adm == ""){
+					alert("Data de Admissão incorreta!");
+					return;
+				}
+
+				idade = 2013 - nasc;
+				idade += (sexo == "F") ? 5 : 0;
+				tempo_trab = 2013 - adm;
+				tempo_trab += (sexo == "F") ? 5 : 0;
+
+				if (idade >= 60 && tempo_trab >= 25){
+					temp = "pode ser aposentado por idade e tempo de serviço";
+				}else if (idade >= 65){
+					temp = "pode ser aposentado por idade";
+				}else if (tempo_trab >= 30){
+					temp = "pode ser aposentado por tempo de serviço";
+				}else{
+					temp = "não tem direito a aposentadoria"
+				}
+
+				obj.innerHTML += "<div id='resultado_aposentadoria'><h4>Resultado da Análise</h4>"+nome+"! Você " + temp + "</div>";
+			}
+
+			//totalizador da compra na mercearia
+			function soma_compra(){
+				var qtde_laranja = document.getElementById("qtde_laranja").value;
+				var qtde_maca = document.getElementById("qtde_maca").value;
+				var vlr_laranja = document.getElementById("vlr_laranja").value;
+				var vlr_maca = document.getElementById("vlr_maca").value;
+				var total_laranja = document.getElementById("total_laranja");
+				var total_maca = document.getElementById("total_maca");
+				var total_compra = document.getElementById("total_compra");
+
+				total_laranja.value = (qtde_laranja*vlr_laranja).toFixed(2);
+				total_maca.value = (qtde_maca*vlr_maca).toFixed(2);
+				total_compra.innerHTML = ((qtde_laranja*vlr_laranja) + (qtde_maca*vlr_maca)).toFixed(2);
+			}
+
+			//processa vlr_unitario produtos mercearia
+			function processa_preco(){
+				var qtde_laranja = document.getElementById("qtde_laranja").value;
+				var qtde_maca = document.getElementById("qtde_maca").value;
+				var vlr_laranja = document.getElementById("vlr_laranja");
+				var vlr_maca = document.getElementById("vlr_maca");	
+
+				if (qtde_laranja<20){
+					vlr_laranja.value = "0.80";
+				}
+
+				if (qtde_maca<12){
+					vlr_maca.value = "1.30"
+				}
+
+				soma_compra();
+			}
+
+			//media aluno faculdade
+			function verifica_media_aluno(){
+				var n1 = parseFloat(document.getElementById("nota1").value);
+				var n2 = parseFloat(document.getElementById("nota2").value);
+				var a = parseInt(document.getElementById("nro_aula").value);
+				var f = parseInt(document.getElementById("nro_freq").value);
+				var media;
+				var percentual_freq;
+
+				if (!isFinite(n1) || isNaN(n1) || !isFinite(n2) || isNaN(n2)){
+					alert("Verifique as notas informadas!");
+					return;
+				}
+
+				if (!isFinite(a) || isNaN(a)){
+					alert("Número de aulas incorreto!");
+					return;
+				}
+
+				if (!isFinite(f) || isNaN(f)){
+					alert("Número de Frequencia incorreto!");
+					return;
+				}
+
+				media = ((n1 + n2)/2).toFixed(2);
+				percentual_freq = (f/a)*100;
+
+				if (media>=6 && percentual_freq >=75){
+					alert("Aprovado!\nMédia: " + media + "\nFrequencia: " + percentual_freq + "%");
+				}else{
+					alert("REPROVADO!\nMédia: " + media + "\nFrequencia: " + percentual_freq + "%");
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+			<div class="content">
+				<h2>Clique em uma opção para abrir o exercício</h2>
+				<h3><a href="#" onclick="show_div(exe01);">+Tabuada</a></h3>
+				<div id="exe01">
+					<label>Informe um número para gerar a tabuada: <input type="text" id="num" name="num"></label><br>
+					<input type="button" id="produto" name="produto" onclick="operacao('*');" value="Produto (*)">
+					<input type="button" id="soma" name="soma" onclick="operacao('+');" value="Soma (+)">
+					<input type="button" id="subtracao" name="subtracao" onclick="operacao('-');" value="Subtração (-)"><br><br>
+					<textarea id="tabuada" name="tabuada"></textarea>
+				</div>
+
+				<h3><a href="#" onclick="show_div(exe02);">+Botões</a></h3>
+				<div id="exe02">
+					<input type="button" id="btn1" name="btn1" onclick="cria_botao();" value="Criar Botão">
+					<input type="button" id="btn" name="btn2" value="OK">
+				</div>
+
+				<h3><a href="#" onclick="show_div(exe03);">+Botões - criação dinâmica</a></h3>
+				<div id="exe03">
+					<label>Informe a quantidade de botões a gerar: <input type="text" id="qtde_btn"></label>
+					<input type="button" value="Gerar" onclick="cria_botao_dinamicamente();">
+				</div>
+
+				<h3><a href="#" onclick="show_div(exe04);">+Aposentadoria</a></h3>
+				<div id="exe04">
+					<table width="100%" cellpadding="0" cellspacing="0">
+						<tbody>
+						<tr>
+							<th>Nome:</th>
+							<td><input type="text" id="nome"></td>
+						</tr>
+						<tr>
+							<th>Sexo:</th>
+							<td>
+								<select id="sexo">
+									<option value="M">Masculino</option>
+									<option value="F">Feminino</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>Ano de Nascimento:</th>
+							<td><input type="number" id="ano_nasc"></td>
+						</tr>
+						<tr>
+							<th>Ano de Admissão:</th>
+							<td><input type="number" id="ano_adm"></td>
+						</tr>
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="2" align="center"><input type="button" value="Validar" onclick="validar_aposentadoria();"></td>
+						</tr>
+						</tfoot>
+					</table>	
+				</div>
+
+				<h3><a href="#" onclick="show_div(exe05);">+Mercearia</a></h3>
+				<div id="exe05">
+					<table width="100%" cellpadding="1" cellspacing="0">
+						<tbody>
+						<tr>
+							<th>Produto</th>
+							<th>Qtde</th>
+							<th>V. Unit</th>
+							<th>V. Total</th>
+						</tr>	
+						<tr>
+							<td>Laranja</td>
+							<td><input type="number" id="qtde_laranja" onchange="processa_preco();"></td>
+							<td><input type="number" id="vlr_laranja" onchange="processa_preco();"></td>
+							<td><input type="number" id="total_laranja" readonly></td>
+						</tr>
+						<tr>
+							<td>Maça</td>
+							<td><input type="number" id="qtde_maca" onchange="processa_preco();"></td>
+							<td><input type="number" id="vlr_maca" onchange="processa_preco();"></td>
+							<td><input type="number" id="total_maca" readonly></td>
+						</tr>
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="4" align="left">Total R$ <span id="total_compra"></td>
+						</tr>
+						</tfoot>
+					</table>			
+				</div>
+
+				<h3><a href="#" onclick="show_div(exe06);">+Média Faculdade</a></h3>
+				<div id="exe06">
+					<table width="100%" cellpadding="0" cellspacing="0">
+						<tbody>
+						<tr>
+							<th>Nota 1: </th>
+							<td><input type="number" id="nota1"></td>
+						</tr>
+						<tr>
+							<th>Nota 2: </th>
+							<td><input type="number" id="nota2"></td>
+						</tr>
+						<tr>
+							<th>N. Aulas: </th>
+							<td><input type="number" id="nro_aula"></td>
+						</tr>
+						<tr>
+							<th>N. Frequencia: </th>
+							<td><input type="number" id="nro_freq"></td>
+						</tr>	
+						</tbody>
+
+						<tfoot>
+						<tr>
+							<td colspan="4" align="center"><input type="button" value="Verifica" onclick="verifica_media_aluno();"></td>
+						</tr>
+						</tfoot>
+					</table>			
+				</div>
+			</div>
+	</body>
+</html>
