@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Atividades com Canvas</title>
+
+		<style type="text/css">
+			.content{
+				width: 500px;
+				border: 1px solid #555;
+				background: #f3f3f3;
+				margin: auto;
+				padding: 8px;
+			}
+
+			h3 a{
+				color: #b3e;
+			}
+
+			/*exercicios iniciam ocultos*/
+			#exe01{
+				visibility: hidden;
+				position: absolute;
+			}
+		</style>
+
+		<script type="text/javascript">
+			function show_div(obj){
+				if (obj.style.visibility == "hidden" || obj.style.visibility == ""){
+					obj.style.visibility = "visible";
+					obj.style.position = "relative";
+				}else{
+					obj.style.visibility = "hidden";
+					obj.style.position = "absolute";
+				}
+			}
+
+			function define_contexto_canvas(){
+				canvas = document.getElementById("myCanvas").getContext("2d");	
+				desenha_x(canvas);
+			}
+
+			function desenha_x(canvas){
+				canvas.beginPath();
+				canvas.moveTo(0,0);
+				canvas.lineTo(200,100);
+				canvas.strokeStyle = "#b3e";
+				canvas.lineWidth = 2;
+				canvas.stroke();
+
+				canvas.beginPath();
+				canvas.moveTo(200, 0);
+				canvas.lineTo(0,100);
+				canvas.strokeStyle = "#009";
+				canvas.lineWidth = 2;
+				canvas.stroke();
+				setTimeout("desenha_retangulo(canvas)", 2000);
+			}
+
+			function desenha_retangulo(canvas){
+				canvas.beginPath();
+				canvas.fillStyle = "#009";
+				canvas.rect(50,0,100,50);
+				canvas.stroke();
+				setTimeout("desenha_circulo(canvas)", 2000);
+			}
+
+			function desenha_circulo(canvas){
+				canvas.beginPath();
+				canvas.fillStyle = "#f00";
+				canvas.arc(45,50,30,0, Math.PI*2, true);
+				canvas.stroke();
+			}
+		</script>
+	</head>
+	<body>
+		<div class="content">
+			<h2>Clique em uma opção para abrir o exercício</h2>
+			<h3><a href="#" onclick="show_div(exe01); define_contexto_canvas();">+Canvas</a></h3>
+			<div id="exe01">
+				<canvas id="myCanvas" width="200" height="100"></canvas>
+			</div>
+		</div>
+	</body>
+</html>
