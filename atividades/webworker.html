@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+
+		<script type="text/javascript">
+			var worker = new Worker('task.js');
+
+			worker.addEventListener('message', function(e){
+				alert('Worker said: ' + e.data);
+			}, false);
+
+			worker.postMessage('Hello World');
+			
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

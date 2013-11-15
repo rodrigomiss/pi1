@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>Sistema de Vendas de Passagens</title>
+
+		<style type="text/css">
+			.content{
+				width: 500px;
+				border: 1px solid #555;
+				background: #f3f3f3;
+				margin: auto;
+				padding: 8px;
+				text-align: center;
+			}
+
+			p{
+				margin-bottom: 50px;
+				color: #999;
+			}
+		</style>
+
+		<script type="text/javascript">
+			window.onload = function(){
+				var p1 = document.getElementById("p1");
+				var p2 = document.getElementById("p2");
+				var p3 = document.getElementById("p3");
+				var p4 = document.getElementById("p4");
+				var n1 = localStorage.getItem("p1");
+				var n2 = localStorage.getItem("p2");
+				var n3 = localStorage.getItem("p3");
+				var n4 = localStorage.getItem("p4");
+
+				if (n1 != null){
+					p1.src = "imagens/poltrona_vermelha.png";
+					p1.title = n1;
+				}
+
+				if (n2 != null){
+					p2.src = "imagens/poltrona_vermelha.png";
+					p2.title = n2;
+				}
+
+				if (n3 != null){
+					p3.src = "imagens/poltrona_vermelha.png";
+					p3.title = n3;
+				}
+
+				if (n4 != null){
+					p4.src = "imagens/poltrona_vermelha.png";
+					p4.title = n4;
+				}
+			}
+
+			function processa_venda(obj){
+				if (obj.title != ""){
+					alert("O passageiro \"" + obj.title + "\" está usando esta poltrona!");
+					exit;
+				}
+
+				var nome = prompt("Informe o nome do passageiro: ");
+
+				if (nome != null){
+					localStorage.setItem(obj.id, nome);
+					obj.src = "imagens/poltrona_vermelha.png";
+					obj.title = nome;		
+				}
+			}
+		</script>
+	</head>
+	<body>
+			<div class="content">
+				<h2>Sistema de Vendas de Passagens</h2>
+				<p>Clique em uma poltrona para fazer a compra!
+					<div>
+						<img id="p1" src="imagens/poltrona_verde.png" onclick="processa_venda(p1);">
+						<img id="p2" src="imagens/poltrona_verde.png" onclick="processa_venda(p2);">
+					</div>
+
+					<div>
+						<img id="p3" src="imagens/poltrona_verde.png" onclick="processa_venda(p3);">
+						<img id="p4" src="imagens/poltrona_verde.png" onclick="processa_venda(p4);">
+					</div>
+			</div>
+	</body>
+</html>
