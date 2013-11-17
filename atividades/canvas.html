@@ -18,9 +18,17 @@
 			}
 
 			/*exercicios iniciam ocultos*/
-			#exe01{
+			#exe01, #exe02, #exe03{
 				visibility: hidden;
 				position: absolute;
+			}
+
+			#exe02, #exe03{
+				text-align: center;
+			}
+
+			#canvasBandeiras, #canvasDado{
+				margin-top: 20px;
 			}
 		</style>
 
@@ -71,6 +79,75 @@
 				canvas.arc(45,50,30,0, Math.PI*2, true);
 				canvas.stroke();
 			}
+
+			function desenha_bandeira_alemanha(){
+				//define contexto canvas
+				canvas = document.getElementById("canvasBandeiras").getContext("2d");	
+				canvas.clearRect(0,0, 200, 100);
+				canvas.beginPath();
+				canvas.fillStyle="#000";
+				canvas.fillRect(0,0, 200,30);
+				canvas.beginPath();
+				canvas.fillStyle="red";
+				canvas.fillRect(0,30,200,30);
+				canvas.beginPath();
+				canvas.fillStyle="yellow";
+				canvas.fillRect(0,60,200,30);				
+			}
+
+			function desenha_bandeira_belgica(){
+				//define contexto canvas
+				canvas = document.getElementById("canvasBandeiras").getContext("2d");	
+				canvas.clearRect(0,0,200,100);
+				canvas.beginPath();
+				canvas.fillStyle="#000";
+				canvas.fillRect(0,0, 65,100);
+				canvas.beginPath();
+				canvas.fillStyle="red";
+				canvas.fillRect(65,0,65,100);
+				canvas.beginPath();
+				canvas.fillStyle="yellow";
+				canvas.fillRect(130,0,65,100);
+			}
+
+			function desenha_bandeira_japao(){
+				//define contexto canvas
+				canvas = document.getElementById("canvasBandeiras").getContext("2d");	
+				canvas.clearRect(0,0,200,100);
+				canvas.beginPath();
+				canvas.fillStyle="#fff";
+				canvas.fillRect(0,0, 200,100);
+				canvas.beginPath();
+				canvas.fillStyle="red";
+				canvas.arc(100,50,30,0,2.5*Math.PI);
+				canvas.fill();
+				canvas.stroke();
+			}
+
+			function joga_dado(){
+				var canvas = document.getElementById("canvasDado").getContext("2d");	
+				var num = 1+Math.floor(Math.random()*6);
+				var x=10, y=10;
+
+				//limpa canvas
+				canvas.beginPath();
+				//desenha retangulo do dado
+				canvas.fillStyle="#fff";
+				canvas.fillRect(0,0,66,44);
+				canvas.fillStyle="#000";				
+
+				for (i=0; i<num; i++){					
+					canvas.arc(x,y,10,0,2.5*Math.PI);
+					canvas.fill();
+					x+=22;
+					y+=0;
+
+					if (x>=66){
+						x=10;
+						y+=22;
+					}
+				}
+			}
 		</script>
 	</head>
 	<body>
@@ -79,6 +156,26 @@
 			<h3><a href="#" onclick="show_div(exe01); define_contexto_canvas();">+Canvas</a></h3>
 			<div id="exe01">
 				<canvas id="myCanvas" width="200" height="100"></canvas>
+			</div>
+
+			<h3><a href="#" onclick="show_div(exe02);">+Atividades Bandeiras</a></h3>
+			<div id="exe02">
+				<div>
+					<input type="button" value="Bandeira Alemanha" onclick="desenha_bandeira_alemanha();">
+					<input type="button" value="Bandeira Bélgica" onclick="desenha_bandeira_belgica();">
+					<input type="button" value="Bandeira Japão" onclick="desenha_bandeira_japao();">
+				</div>
+
+				<canvas id="canvasBandeiras" width="200" height="100"></canvas>
+			</div>
+
+			<h3><a href="#" onclick="show_div(exe03);">+Atividades Dados</a></h3>
+			<div id="exe03">
+				<div>
+					<input type="button" value="Jogar Dado" onclick="joga_dado();">
+				</div>
+
+				<canvas id="canvasDado" width="200" height="100"></canvas>
 			</div>
 		</div>
 	</body>
